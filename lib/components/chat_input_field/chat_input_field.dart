@@ -77,6 +77,9 @@ class ChatInputField extends StatefulWidget {
 
   final ValueChanged<ChatMessage> onTextSubmit;
 
+  // Maximum number of lines for the text input.
+  final int maxLines;
+
   ///
   final bool enableInput;
   final TextDirection? textDirection;
@@ -99,6 +102,7 @@ class ChatInputField extends StatefulWidget {
     this.cancelThreshold = 100.0,
     this.showWaveAnimation = true,
     this.enableInput = true,
+    this.maxLines = 1,
     this.textDirection,
     required this.recordingNoteHintText,
     Duration? waveDuration,
@@ -233,6 +237,7 @@ class _ChatInputFieldState extends State<ChatInputField> with SingleTickerProvid
                               ),
                               Expanded(
                                 child: TextField(
+                                  maxLines: widget.maxLines,
                                   enabled: widget.enableInput,
                                   controller: widget.textController,
                                   decoration: widget.textFieldDecoration,
